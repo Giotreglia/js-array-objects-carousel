@@ -32,6 +32,9 @@ const imagesListDom = document.querySelector(".images-list");
 const upDom = document.getElementById("up");
 const downDom = document.getElementById("down");
 const sidebarImgDom = document.querySelector(".sidebar-container");
+const startDom = document.getElementById("start");
+const stopDom = document.getElementById("stop");
+const reverseDom = document.getElementById("reverse"); 
 
 // Ciclo per aggiunger immagini degli oggetti dell'array all'HTML
 
@@ -138,7 +141,28 @@ for (let i = 0; i < sidebarContainerDom.length; i++) {
 
 // Autoplay
 
-setInterval(cicloInfinito,3000); 
+// Start & Stop Autoplay
+let autoplay;
+
+startDom.addEventListener('click',
+    function () {
+        clearInterval(autoplay);
+        autoplay = setInterval(cicloInfinito,3000);
+    }
+)
+
+stopDom.addEventListener('click',
+    function () {
+        clearInterval(autoplay);
+    }
+)
+
+reverseDom.addEventListener('click',
+    function () {
+        clearInterval(autoplay);
+        autoplay = setInterval(cicloInfinitoReverse,3000);
+    }
+)
 
 // FUNZIONI
 
@@ -189,7 +213,7 @@ function cicloInfinito() {
 }
 
 // Ciclo infinito reverse
-function cicloInfinitoReverse(params) {
+function cicloInfinitoReverse() {
     if (immagineCorrente > 0) {
         
         cambiaImmagineRemove(immagineCorrente);

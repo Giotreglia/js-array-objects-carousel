@@ -131,3 +131,14 @@ body {
 .nav-scroll:active {
     scale: 1;
 }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.btn {
+    padding: 5px 15px;
+}
