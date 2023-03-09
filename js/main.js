@@ -108,10 +108,7 @@ upDom.addEventListener('click',
 
             immagineCorrente--;
 
-            cambiaImmagineAdd(immagineCorrente);
-
-            downDom.classList.remove('hide');
-            
+            cambiaImmagineAdd(immagineCorrente);           
             
         } else if (immagineCorrente == 0) {
 
@@ -124,23 +121,49 @@ upDom.addEventListener('click',
     }
 );
 
-// Aggiunta opzione cambia immagine al clic
+// Aggiunta opzione cambia immagine al clic su thumbnail
 
 for (let i = 0; i < sidebarContainerDom.length; i++) {
     sidebarContainerDom[i].addEventListener('click', 
     function() {
-        imgContainerDom[immagineCorrente].classList.remove('show');
-        imgSidebarOverlayDom[immagineCorrente].classList.remove('hide');
-        sidebarContainerDom[immagineCorrente].classList.remove('border');
+
+        cambiaImmagineRemove(immagineCorrente)
 
         immagineCorrente = i;
 
-        imgContainerDom[immagineCorrente].classList.add('show');
-        imgSidebarOverlayDom[immagineCorrente].classList.add('hide');
-        sidebarContainerDom[immagineCorrente].classList.add('border'); 
-    }
-);
+        cambiaImmagineAdd(immagineCorrente)
+    })
 }
+
+
+// Autoplay
+
+
+for (let i = 0; i < sidebarContainerDom.length; i++) {
+  
+    setTimeout(function() {
+        if (immagineCorrente < imgContainerDom.length - 1) {
+            
+            cambiaImmagineRemove(immagineCorrente);
+
+            immagineCorrente++;
+
+            cambiaImmagineAdd(immagineCorrente);
+                        
+        } else if (immagineCorrente == imgContainerDom.length - 1) {
+
+            cambiaImmagineRemove(immagineCorrente);
+
+            immagineCorrente = 0;
+
+            cambiaImmagineAdd(immagineCorrente);        
+        }
+    },3000)
+    
+} 
+    
+
+
 
 // FUNZIONI
 
