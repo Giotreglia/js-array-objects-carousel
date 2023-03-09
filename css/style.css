@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: darkgrey;
+    background-color: lightgrey;
 }
 
 .container {
@@ -140,5 +140,22 @@ body {
 }
 
 .btn {
-    padding: 5px 15px;
+    padding: 3px 15px;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    background-color: grey;
+    cursor: pointer;
+    transition: all 0.1s;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 0;
+}
+
+.btn:hover {
+    scale: 1.1;
+}
+
+.btn:active {
+    scale: 1;
 }
