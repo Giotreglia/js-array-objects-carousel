@@ -2,8 +2,8 @@
 
 //  Creo l'array con la lista immagini da inserire nel carosello
 
-// Array immagini
-const listaImmagini = [
+// Array oggetti
+const listaOggetti = [
     {
         image: 'img/01.webp',
         title: 'Marvel\'s Spiderman Miles Morale',
@@ -35,22 +35,22 @@ const sidebarImgDom = document.querySelector(".sidebar-container");
 
 // Ciclo per aggiunger immagini degli oggetti dell'array all'HTML
 
-for (let i = 0; i < listaImmagini.length; i++) {
+for (let i = 0; i < listaOggetti.length; i++) {
     const newImgContainer = `
         
         <div class="img-container">
-            <img class="image" src="${listaImmagini[i].image}">
+            <img class="image" src="${listaOggetti[i].image}">
             <div class="description">
-                <h2 class="img-title">${listaImmagini[i].title}</h2>
-                <span class="img-text">${listaImmagini[i].text}</span>            
+                <h2 class="img-title">${listaOggetti[i].title}</h2>
+                <span class="img-text">${listaOggetti[i].text}</span>            
             </div>
         </div>
 
     `
     const newThumbnail = `
-
+    
     <div class="img-sidebar-container"> 
-        <img src="${listaImmagini[i].image}">
+        <img src="${listaOggetti[i].image}">
         <div class="overlay"></div>
     </div>   
     `
@@ -71,8 +71,6 @@ let immagineCorrente = 0;
 imgContainerDom[immagineCorrente].classList.add('show');
 imgSidebarOverlayDom[immagineCorrente].classList.add('hide');
 sidebarContainerDom[immagineCorrente].classList.add('border');
-/* upDom.classList.add('hide'); */
-
 
 // Creo programma per cambiare immagine al clic sui pulsanti up e down
 
@@ -126,6 +124,28 @@ upDom.addEventListener('click',
     }
 );
 
+// Aggiunta opzione cambia immagine al clic
+let thumbnails = [];
+for (let i = 0; i < sidebarContainerDom.length; i++) {
+    thumbnails.push(sidebarContainerDom[i]);
+}
+
+thumbnails.forEach(function(element) { 
+        element.addEventListener('click', 
+            function() {
+                imgContainerDom[immagineCorrente].classList.remove('show');
+                imgSidebarOverlayDom[immagineCorrente].classList.remove('hide');
+                sidebarContainerDom[immagineCorrente].classList.remove('border');
+
+                immagineCorrente = this.immagineCorrente;
+
+                imgContainerDom[immagineCorrente].classList.add('show');
+                imgSidebarOverlayDom[immagineCorrente].classList.add('hide');
+                sidebarContainerDom[immagineCorrente].classList.add('border'); 
+            }
+        );
+    })
+
 
 // FUNZIONI
 
@@ -140,4 +160,16 @@ function cambiaImmagineAdd(immagineCorrente) {
     imgSidebarOverlayDom[immagineCorrente].classList.add('hide');
     sidebarContainerDom[immagineCorrente].classList.add('border');
 
+}
+
+function selezionaImmagine(immagineCorrente) {
+    imgContainerDom[immagineCorrente].classList.remove('show');
+    imgSidebarOverlayDom[immagineCorrente].classList.remove('hide');
+    sidebarContainerDom[immagineCorrente].classList.remove('border');
+
+    this.immagineCorrente;   
+
+    imgContainerDom[immagineCorrente].classList.add('show');
+    imgSidebarOverlayDom[immagineCorrente].classList.add('hide');
+    sidebarContainerDom[immagineCorrente].classList.add('border');
 }
