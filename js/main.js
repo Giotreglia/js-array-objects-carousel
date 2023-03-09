@@ -138,32 +138,7 @@ for (let i = 0; i < sidebarContainerDom.length; i++) {
 
 // Autoplay
 
-
-for (let i = 0; i < sidebarContainerDom.length; i++) {
-  
-    setTimeout(function() {
-        if (immagineCorrente < imgContainerDom.length - 1) {
-            
-            cambiaImmagineRemove(immagineCorrente);
-
-            immagineCorrente++;
-
-            cambiaImmagineAdd(immagineCorrente);
-                        
-        } else if (immagineCorrente == imgContainerDom.length - 1) {
-
-            cambiaImmagineRemove(immagineCorrente);
-
-            immagineCorrente = 0;
-
-            cambiaImmagineAdd(immagineCorrente);        
-        }
-    },3000)
-    
-} 
-    
-
-
+setInterval(cicloInfinito,3000); 
 
 // FUNZIONI
 
@@ -190,4 +165,45 @@ function selezionaImmagine(immagineCorrente) {
     imgContainerDom[immagineCorrente].classList.add('show');
     imgSidebarOverlayDom[immagineCorrente].classList.add('hide');
     sidebarContainerDom[immagineCorrente].classList.add('border');
+}
+
+// Ciclo infinito
+
+function cicloInfinito() {
+    if (immagineCorrente < imgContainerDom.length - 1) {
+            
+        cambiaImmagineRemove(immagineCorrente);
+
+        immagineCorrente++;
+
+        cambiaImmagineAdd(immagineCorrente);
+                    
+    } else if (immagineCorrente == imgContainerDom.length - 1) {
+
+        cambiaImmagineRemove(immagineCorrente);
+
+        immagineCorrente = 0;
+
+        cambiaImmagineAdd(immagineCorrente);        
+    }
+}
+
+// Ciclo infinito reverse
+function cicloInfinitoReverse(params) {
+    if (immagineCorrente > 0) {
+        
+        cambiaImmagineRemove(immagineCorrente);
+
+        immagineCorrente--;
+
+        cambiaImmagineAdd(immagineCorrente);           
+        
+    } else if (immagineCorrente == 0) {
+
+        cambiaImmagineRemove(immagineCorrente);
+
+        immagineCorrente = imgContainerDom.length -1;
+
+        cambiaImmagineAdd(immagineCorrente);
+    }
 }
