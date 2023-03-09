@@ -125,27 +125,22 @@ upDom.addEventListener('click',
 );
 
 // Aggiunta opzione cambia immagine al clic
-let thumbnails = [];
+
 for (let i = 0; i < sidebarContainerDom.length; i++) {
-    thumbnails.push(sidebarContainerDom[i]);
+    sidebarContainerDom[i].addEventListener('click', 
+    function() {
+        imgContainerDom[immagineCorrente].classList.remove('show');
+        imgSidebarOverlayDom[immagineCorrente].classList.remove('hide');
+        sidebarContainerDom[immagineCorrente].classList.remove('border');
+
+        immagineCorrente = i;
+
+        imgContainerDom[immagineCorrente].classList.add('show');
+        imgSidebarOverlayDom[immagineCorrente].classList.add('hide');
+        sidebarContainerDom[immagineCorrente].classList.add('border'); 
+    }
+);
 }
-
-thumbnails.forEach(function(element) { 
-        element.addEventListener('click', 
-            function() {
-                imgContainerDom[immagineCorrente].classList.remove('show');
-                imgSidebarOverlayDom[immagineCorrente].classList.remove('hide');
-                sidebarContainerDom[immagineCorrente].classList.remove('border');
-
-                immagineCorrente = this.immagineCorrente;
-
-                imgContainerDom[immagineCorrente].classList.add('show');
-                imgSidebarOverlayDom[immagineCorrente].classList.add('hide');
-                sidebarContainerDom[immagineCorrente].classList.add('border'); 
-            }
-        );
-    })
-
 
 // FUNZIONI
 
