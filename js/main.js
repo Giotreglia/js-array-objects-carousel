@@ -82,45 +82,33 @@ sidebarContainerDom[immagineCorrente].classList.add('border');
 downDom.addEventListener('click',
 
     function() {
-        if (immagineCorrente < imgContainerDom.length - 1) {
             
             cambiaImmagineRemove(immagineCorrente);
 
-            immagineCorrente++;
+            if (immagineCorrente < imgContainerDom.length - 1) {
+                immagineCorrente++;
+            } else if (immagineCorrente == imgContainerDom.length - 1) {
+                immagineCorrente = 0;
+            }
 
-            cambiaImmagineAdd(immagineCorrente);
-                        
-        } else if (immagineCorrente == imgContainerDom.length - 1) {
-
-            cambiaImmagineRemove(immagineCorrente);
-
-            immagineCorrente = 0;
-
-            cambiaImmagineAdd(immagineCorrente);        
+            cambiaImmagineAdd(immagineCorrente);             
         }
-    }
 );
 
 // Pulsante Up
 upDom.addEventListener('click',
 
     function() {
-        if (immagineCorrente > 0) {
             
             cambiaImmagineRemove(immagineCorrente);
 
-            immagineCorrente--;
+            if (immagineCorrente > 0) {
+                immagineCorrente--;
+            } else if (immagineCorrente == 0) {
+                immagineCorrente = imgContainerDom.length -1;
+            }
 
             cambiaImmagineAdd(immagineCorrente);           
-            
-        } else if (immagineCorrente == 0) {
-
-            cambiaImmagineRemove(immagineCorrente);
-
-            immagineCorrente = imgContainerDom.length -1;
-
-            cambiaImmagineAdd(immagineCorrente);
-        }
     }
 );
 
