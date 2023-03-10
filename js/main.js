@@ -40,7 +40,7 @@ const reverseDom = document.getElementById("reverse");
 
 for (let i = 0; i < listaOggetti.length; i++) {
     const newImgContainer = `
-        
+
         <div class="img-container">
             <img class="image" src="${listaOggetti[i].image}">
             <div class="description">
@@ -48,16 +48,14 @@ for (let i = 0; i < listaOggetti.length; i++) {
                 <span class="img-text">${listaOggetti[i].text}</span>            
             </div>
         </div>
-
-    `
+    `;
     const newThumbnail = `
     
     <div class="img-sidebar-container"> 
         <img src="${listaOggetti[i].image}">
         <div class="overlay"></div>
     </div>   
-    `
-    ;
+    `;
     
     imagesListDom.innerHTML += newImgContainer; 
     sidebarImgDom.innerHTML += newThumbnail;
@@ -78,38 +76,10 @@ sidebarContainerDom[immagineCorrente].classList.add('border');
 // Creo programma per cambiare immagine al clic sui pulsanti up e down
 
 // Pulsante Down
-downDom.addEventListener('click',
-
-    function() {
-            
-            cambiaImmagineRemove(immagineCorrente);
-
-            if (immagineCorrente < imgContainerDom.length - 1) {
-                immagineCorrente++;
-            } else if (immagineCorrente == imgContainerDom.length - 1) {
-                immagineCorrente = 0;
-            }
-
-            cambiaImmagineAdd(immagineCorrente);             
-        }
-);
+downDom.addEventListener('click', nextImage);
 
 // Pulsante Up
-upDom.addEventListener('click',
-
-    function() {
-            
-            cambiaImmagineRemove(immagineCorrente);
-
-            if (immagineCorrente > 0) {
-                immagineCorrente--;
-            } else if (immagineCorrente == 0) {
-                immagineCorrente = imgContainerDom.length -1;
-            }
-
-            cambiaImmagineAdd(immagineCorrente);           
-    }
-);
+upDom.addEventListener('click', prevImage);
 
 // Aggiunta opzione cambia immagine al clic su thumbnail
 for (let i = 0; i < sidebarContainerDom.length; i++) {
@@ -132,7 +102,7 @@ let autoplay;
 startDom.addEventListener('click',
     function () {
         clearInterval(autoplay);
-        autoplay = setInterval(cicloInfinito,3000);
+        autoplay = setInterval(nextImage,3000);
     }
 )
 
@@ -146,7 +116,7 @@ stopDom.addEventListener('click',
 reverseDom.addEventListener('click',
     function () {
         clearInterval(autoplay);
-        autoplay = setInterval(cicloInfinitoReverse,3000);
+        autoplay = setInterval(prevImage,3000);
     }
 )
 
@@ -164,43 +134,28 @@ function cambiaImmagineAdd(immagineCorrente) {
 
 }
 
-// Ciclo infinito
-
-function cicloInfinito() {
-    if (immagineCorrente < imgContainerDom.length - 1) {
+function nextImage() {
             
-        cambiaImmagineRemove(immagineCorrente);
+    cambiaImmagineRemove(immagineCorrente);
 
+    if (immagineCorrente < imgContainerDom.length - 1) {
         immagineCorrente++;
-
-        cambiaImmagineAdd(immagineCorrente);
-                    
     } else if (immagineCorrente == imgContainerDom.length - 1) {
-
-        cambiaImmagineRemove(immagineCorrente);
-
         immagineCorrente = 0;
-
-        cambiaImmagineAdd(immagineCorrente);        
     }
+
+    cambiaImmagineAdd(immagineCorrente);             
 }
 
-// Ciclo infinito reverse
-function cicloInfinitoReverse() {
+function prevImage() {
+
+    cambiaImmagineRemove(immagineCorrente);
+
     if (immagineCorrente > 0) {
-        
-        cambiaImmagineRemove(immagineCorrente);
-
         immagineCorrente--;
-
-        cambiaImmagineAdd(immagineCorrente);           
-        
     } else if (immagineCorrente == 0) {
-
-        cambiaImmagineRemove(immagineCorrente);
-
         immagineCorrente = imgContainerDom.length -1;
-
-        cambiaImmagineAdd(immagineCorrente);
     }
+
+    cambiaImmagineAdd(immagineCorrente); 
 }
