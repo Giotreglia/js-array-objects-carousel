@@ -36,7 +36,7 @@ const startDom = document.getElementById("start");
 const stopDom = document.getElementById("stop");
 const reverseDom = document.getElementById("reverse"); 
 
-// Ciclo per aggiunger immagini degli oggetti dell'array all'HTML
+// Ciclo per aggiungere immagini degli oggetti dell'array all'HTML
 
 for (let i = 0; i < listaOggetti.length; i++) {
     const newImgContainer = `
@@ -78,7 +78,6 @@ sidebarContainerDom[immagineCorrente].classList.add('border');
 // Creo programma per cambiare immagine al clic sui pulsanti up e down
 
 // Pulsante Down
-
 downDom.addEventListener('click',
 
     function() {
@@ -113,7 +112,6 @@ upDom.addEventListener('click',
 );
 
 // Aggiunta opzione cambia immagine al clic su thumbnail
-
 for (let i = 0; i < sidebarContainerDom.length; i++) {
     sidebarContainerDom[i].addEventListener('click', 
     function() {
@@ -128,7 +126,6 @@ for (let i = 0; i < sidebarContainerDom.length; i++) {
 
 
 // Autoplay
-
 // Start & Stop Autoplay
 let autoplay;
 
@@ -146,7 +143,6 @@ stopDom.addEventListener('click',
 )
 
 // Reverse
-
 reverseDom.addEventListener('click',
     function () {
         clearInterval(autoplay);
@@ -155,7 +151,6 @@ reverseDom.addEventListener('click',
 )
 
 // FUNZIONI
-
 function cambiaImmagineRemove(immagineCorrente) {
     imgContainerDom[immagineCorrente].classList.remove('show');
     imgSidebarOverlayDom[immagineCorrente].classList.remove('hide');
