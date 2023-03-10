@@ -157,6 +157,8 @@ stopDom.addEventListener('click',
     }
 )
 
+// Reverse
+
 reverseDom.addEventListener('click',
     function () {
         clearInterval(autoplay);
@@ -177,18 +179,6 @@ function cambiaImmagineAdd(immagineCorrente) {
     imgSidebarOverlayDom[immagineCorrente].classList.add('hide');
     sidebarContainerDom[immagineCorrente].classList.add('border');
 
-}
-
-function selezionaImmagine(immagineCorrente) {
-    imgContainerDom[immagineCorrente].classList.remove('show');
-    imgSidebarOverlayDom[immagineCorrente].classList.remove('hide');
-    sidebarContainerDom[immagineCorrente].classList.remove('border');
-
-    this.immagineCorrente;   
-
-    imgContainerDom[immagineCorrente].classList.add('show');
-    imgSidebarOverlayDom[immagineCorrente].classList.add('hide');
-    sidebarContainerDom[immagineCorrente].classList.add('border');
 }
 
 // Ciclo infinito
